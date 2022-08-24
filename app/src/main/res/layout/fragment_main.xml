@@ -2,152 +2,102 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.PlaceholderFragment">
+    tools:context=".MainActivity2">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#914D4D"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="2dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="2dp"
-            app:cardMaxElevation="4dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+        <LinearLayout
+            android:layout_width="406dp"
+            android:layout_height="145dp"
+            android:orientation="vertical">
 
-            <!--
-            In the above cardview widget
-            cardelevation property will give elevation to your card view
-            card corner radius will provide radius to your card view
-            card background color will give background color to your card view
-            card max elevation will give the cardview maximum elevation
-            card prevent corner overlap will add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners.
-            card use compact padding will add padding in API v21+ as well to have the same measurements with previous versions.
-            below are the two widgets imageview and text view we are displaying inside our card view.
-            -->
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:text="Mojito"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                tools:ignore="MissingConstraints" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_launcher_background"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:text="Mojito"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView4"
+                    android:layout_width="298dp"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/image_test1"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="start"
-                        android:layout_margin="10dp"
-                        android:contentDescription="@string/app_name"
-                        android:src="@drawable/ic_launcher_background" />
-
-                    <TextView
-                        android:id="@+id/textView1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:padding="5dp"
-                        android:text="Fovero cocktail haha"
-                        tools:text="@string/lorem"></TextView>
-                </LinearLayout>
-
+                    android:text="description"
+                    tools:ignore="MissingConstraints" />
             </LinearLayout>
 
+        </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="409dp"
+            android:layout_height="388dp"
+            android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="2dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="2dp"
-            app:cardMaxElevation="4dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
-
-            <!--
-            In the above cardview widget
-            cardelevation property will give elevation to your card view
-            card corner radius will provide radius to your card view
-            card background color will give background color to your card view
-            card max elevation will give the cardview maximum elevation
-            card prevent corner overlap will add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners.
-            card use compact padding will add padding in API v21+ as well to have the same measurements with previous versions.
-            below are the two widgets imageview and text view we are displaying inside our card view.
-            -->
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="386dp"
+                android:text=">ingredients: \n>ingredient1 \n>ingredient2 \n>ingredient3\n\nMethod:\n"
+                android:textSize="16sp"
+                tools:ignore="MissingConstraints" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:text="Cosmopolitan"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+        </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="409dp"
+            android:layout_height="99dp"
+            android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/image_test2"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="start"
-                        android:layout_margin="10dp"
-                        android:contentDescription="@string/app_name"
-                        android:src="@drawable/ic_launcher_background" />
+            <Space
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="200dp"
-                        android:layout_weight="1"
-                        android:padding="5dp"
-                        android:text="kai auto kalo einai alla ligo jino re bro"
-                        tools:text="@string/lorem" />
-                </LinearLayout>
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="62dp"
+                android:text="Add to Fav"
+                tools:ignore="MissingConstraints" />
 
-            </LinearLayout>
+            <Space
+                android:layout_width="55dp"
+                android:layout_height="54dp"
+                android:layout_weight="1" />
 
+            <Button
+                android:id="@+id/button"
+                android:layout_width="112dp"
+                android:layout_height="63dp"
+                android:text="Comment"
+                tools:ignore="MissingConstraints" />
 
-        </androidx.cardview.widget.CardView>
+            <Space
+                android:layout_width="55dp"
+                android:layout_height="54dp"
+                android:layout_weight="1" />
 
+        </LinearLayout>
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
