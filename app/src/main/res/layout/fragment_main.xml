@@ -74,7 +74,7 @@
                         android:layout_height="100dp"
                         android:layout_weight="1"
                         android:padding="5dp"
-                        android:text="lorem2"
+                        android:text="lorem23213123213"
                         tools:text="@string/hide_bottom_view_on_scroll_behavior"></TextView>
                 </LinearLayout>
 
