@@ -23,5 +23,7 @@ public class CommentActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
     }
 }
