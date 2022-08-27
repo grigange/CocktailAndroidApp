@@ -24,5 +24,16 @@ public class InfoActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button button2= (Button)findViewById(R.id.button5);
+        button2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent b = new Intent(InfoActivity.this, MainActivity.class);
+                startActivity(b);
+            }
+        });
     }
 }
