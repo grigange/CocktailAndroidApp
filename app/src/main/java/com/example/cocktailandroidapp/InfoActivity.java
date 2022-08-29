@@ -7,12 +7,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class InfoActivity extends AppCompatActivity {
+
+    private ArrayList<CommentsInfo> CommentsInfoArrayList;
+    private DBHandler dbHandler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
+        CommentsInfoArrayList = new ArrayList<>();
+        dbHandler = new DBHandler(InfoActivity.this);
+
+        CommentsInfoArrayList = dbHandler.readComments();
+        for (CommentsInfo str : CommentsInfoArrayList)
+        {
+            System.out.println(str.getComment());
+        }
+
+
 
         Button button1= (Button)findViewById(R.id.button7);
         button1.setOnClickListener(new View.OnClickListener() {

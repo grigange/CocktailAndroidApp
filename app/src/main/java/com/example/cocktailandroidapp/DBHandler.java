@@ -2,8 +2,11 @@ package com.example.cocktailandroidapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -43,4 +46,32 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
+
+    public ArrayList<CommentsInfo> readComments() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursorCourses = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        ArrayList<CommentsInfo> CommentsInfoArrayList = new ArrayList<>();
+        if (cursorCourses.moveToFirst()) {
+            do {
+                // on below line we are adding the data from cursor to our array list.
+                CommentsInfoArrayList.add(new CommentsInfo(cursorCourses.getString(1)));
+            } while (cursorCourses.moveToNext());
+        }
+        cursorCourses.close();
+        return CommentsInfoArrayList;
+    }
+
+
+    public void updateNote(String originalNote, String note) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(NAME_COL, note);
+
+
+        db.update(TABLE_NAME, values, "myComment=?", new String[]{originalNote});
+        db.close();
+    }
+
 }

@@ -162,7 +162,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:layout_weight="2"
-                            android:text="Add Comment" />
+                            android:text="Add Notes" />
 
                         <Button
                             android:id="@+id/button5"
