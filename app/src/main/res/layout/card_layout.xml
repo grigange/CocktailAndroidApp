@@ -31,6 +31,7 @@
             android:layout_marginBottom="5dp"
             android:text="@string/item_title"
             android:textAlignment="center"
+            android:textColor="#131313"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -65,6 +66,7 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:text="@string/item_details"
+                        android:textColor="#131313"
                         android:padding="5dp"
                         tools:text="@string/lorem" />
                 </LinearLayout>
