@@ -45,7 +45,7 @@ public class CommentActivity extends AppCompatActivity {
                     }
                     dbHandler.addNewComment(finalComment);
 
-                    Toast.makeText(CommentActivity.this, "Note has been added.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CommentActivity.this, "Note has been added 🍸", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(CommentActivity.this, InfoActivity.class);
                     startActivity(i);
 
@@ -63,7 +63,7 @@ public class CommentActivity extends AppCompatActivity {
                     dbHandler.updateNote(note.getComment(),finalComment);
 
 
-                    Toast.makeText(CommentActivity.this, "Note Updated..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CommentActivity.this, "Note Updated 🍸", Toast.LENGTH_SHORT).show();
 
 
                     Intent i = new Intent(CommentActivity.this, InfoActivity.class);
