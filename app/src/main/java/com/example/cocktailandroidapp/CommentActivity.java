@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.icu.text.IDNA;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,7 +33,12 @@ public class CommentActivity extends AppCompatActivity {
         CommentsInfoArrayList = new ArrayList<>();
         CommentsInfoArrayList = dbHandler.readComments();
 
-        if(CommentsInfoArrayList.isEmpty()){
+        Intent intent = getIntent();
+        String card_id = intent.getStringExtra("ID_REQ");
+        String comm = dbHandler.searchById(card_id);
+        Log.i("DP HANDLER",comm);
+
+        if(true){
             addNoteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -43,11 +49,12 @@ public class CommentActivity extends AppCompatActivity {
                         Toast.makeText(CommentActivity.this, "Please type something", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    dbHandler.addNewComment(finalComment);
+                    dbHandler.addNewComment(card_id,finalComment);
 
                     Toast.makeText(CommentActivity.this, "Note has been added 🍸", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(CommentActivity.this, InfoActivity.class);
-                    startActivity(i);
+                    //Intent i = new Intent(CommentActivity.this, InfoActivity.class);
+                    //startActivity(i);
+                    finish();
 
                 }
             });
@@ -66,8 +73,9 @@ public class CommentActivity extends AppCompatActivity {
                     Toast.makeText(CommentActivity.this, "Note Updated 🍸", Toast.LENGTH_SHORT).show();
 
 
-                    Intent i = new Intent(CommentActivity.this, InfoActivity.class);
-                    startActivity(i);
+                    //Intent i = new Intent(CommentActivity.this, InfoActivity.class);
+                    //startActivity(i);
+                    finish();
                 }
             });
 
@@ -84,8 +92,9 @@ public class CommentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(CommentActivity.this, InfoActivity.class);
-                startActivity(i);
+                //Intent i = new Intent(CommentActivity.this, InfoActivity.class);
+                //startActivity(i);
+                finish();
             }
         });
 

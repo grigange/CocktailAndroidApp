@@ -54,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="Cosmopolitan"
+                        android:text=""
                         android:id="@+id/title"
                         android:textAlignment="center"
                         android:textColor="#131313"
@@ -73,7 +73,7 @@
                             android:layout_gravity="start"
                             android:layout_marginRight="5dp"
                             android:contentDescription="@string/app_name"
-                            android:src="@drawable/ic_launcher_background" />
+                            android:src="@drawable/ic_launcher_foreground" />
 
                         <ScrollView
                             android:layout_width="match_parent"
@@ -92,7 +92,7 @@
                                     android:layout_weight="1"
                                     android:padding="5dp"
                                     android:textColor="#131313"
-                                    android:text="kai auto kalo einai alla ligo jino re bro djasjhd ahshahjadshsad hhjd j dsha hdd j sh shadj dshajsd hjs hhsdahs shadh asdhasjdhsahjdashjhashjdh ajsd ajhhasja dhjahsd asj hd  sdahas dja s as hjash sadhja ha hjh hja hsja shja shda h hsja hjsahjsa hjs dhjsa hja hjasd hj sadhjsad h asdhha sdhj sdas  sdaha sda sdhj sdah  a" />
+                                    android:text="" />
                             </LinearLayout>
                         </ScrollView>
 
@@ -152,7 +152,7 @@
                                 android:padding="5dp"
                                 android:textColor="#131313"
 
-                                android:text="kai auto kalo einai alla ligo jino re bro djasjhd ahshahjadshsad hhjd j dsha hdd j sh shadj dshajsd hjs hhsdahs shadh asdhasjdhsahjdashjhashjdh ajsd ajhhasja dhjahsd asj hd  sdahas dja s as hjash sadhja ha hjh hja hsja shja shda h hsja hjsahjsa hjs dhjsa hja hjasd hj sadhjsad h asdhha sdhj sdas  sdaha sda sdhj sdah  a" />
+                                android:text="" />
                         </LinearLayout>
                     </ScrollView>
 

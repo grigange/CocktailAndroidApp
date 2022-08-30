@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < a.length(); i++) {
                     JSONObject item = a.getJSONObject(i);
                     CocktailModelClass model = new CocktailModelClass();
-
+                    model.setId(item.getString("idDrink"));
                     model.setTitle(item.getString("strDrink"));
                     model.setImg(item.getString("strDrinkThumb"));
                     model.setDesc(item.getString("strIngredient1"));

@@ -1,7 +1,9 @@
 package com.example.cocktailandroidapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,11 +55,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(mContext)
-                .inflate(R.layout.card_layout, parent, false);
-
-
-
+        View v = LayoutInflater.from(mContext).inflate(R.layout.card_layout, parent, false);
         return new ViewHolder(v);
 
     }
@@ -76,6 +74,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             public void onClick(View v) {
 
                 Intent i=new Intent(v.getContext(), InfoActivity.class);
+                i.putExtra("ID_REQ",mData.get(position).getId());
                 v.getContext().startActivity(i);
             }
         });

@@ -3,6 +3,7 @@ package com.example.cocktailandroidapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,29 +38,33 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         TextView theNote= (TextView)findViewById(R.id.notes) ;
 
+        Intent intent = getIntent();
+        String card_id = intent.getStringExtra("ID_REQ");
+
         CommentsInfoArrayList = new ArrayList<>();
         dbHandler = new DBHandler(InfoActivity.this);
+        /*CommentsInfo note = new CommentsInfo(card_id,"");
+        if (!CommentsInfoArrayList.isEmpty()){
+            CommentsInfoArrayList = dbHandler.readComments();
+            note = CommentsInfoArrayList.get(0);
 
+        }*/
 
-        CommentsInfoArrayList = dbHandler.readComments();
-        CommentsInfo note = CommentsInfoArrayList.get(0);
-        theNote.setText(note.getComment());
+        theNote.setText(dbHandler.searchById(card_id));
         theNote.setGravity(Gravity.CENTER);
 
 
-        for (CommentsInfo str : CommentsInfoArrayList)
-        {
-            System.out.println(str.getComment());
-        }
+
 
         TextView view_title = (TextView)findViewById(R.id.title);
         ImageView view_img = (ImageView)findViewById(R.id.img);
         TextView view_desc = (TextView)findViewById(R.id.desc);
         TextView view_recipe = (TextView)findViewById(R.id.recipe);
+
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("https://the-cocktail-db.p.rapidapi.com/lookup.php?i=11009")
+                .url("https://the-cocktail-db.p.rapidapi.com/lookup.php?i=" + card_id )
                 .get()
                 .addHeader("X-RapidAPI-Key", "b7cf5674d2msh55f4729e9490592p155a7bjsn5e40837bff16")
                 .addHeader("X-RapidAPI-Host", "the-cocktail-db.p.rapidapi.com")
@@ -92,6 +97,7 @@ public class InfoActivity extends AppCompatActivity {
                             try {
                                 title = ob.getJSONArray("drinks").getJSONObject(0).getString("strDrink");
                                 view_title.setText(title);
+                                view_title.setVisibility(View.VISIBLE);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -117,16 +123,13 @@ public class InfoActivity extends AppCompatActivity {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            Log.i("INFO DATA  ===  ","FirstName "+title);
-                            Log.i("INFO DATA  ===  ","FirstName "+img);
-                            Log.i("INFO DATA  ===  ","FirstName "+desc);
-                            Log.i("INFO DATA  ===  ","FirstName "+recipe);
                         }
                     });
                 }
 
             }
         });
+
 
         Button button1= (Button)findViewById(R.id.button7);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +138,7 @@ public class InfoActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(InfoActivity.this, CommentActivity.class);
+                i.putExtra("ID_REQ",card_id);
                 startActivity(i);
             }
         });
@@ -144,9 +148,7 @@ public class InfoActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
-                Intent b = new Intent(InfoActivity.this, MainActivity.class);
-                startActivity(b);
+                finish();
             }
         });
     }
