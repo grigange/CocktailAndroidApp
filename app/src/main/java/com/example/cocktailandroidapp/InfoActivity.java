@@ -151,4 +151,14 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        Intent intent = getIntent();
+        String card_id = intent.getStringExtra("ID_REQ");
+        TextView theNote= (TextView)findViewById(R.id.notes) ;
+        theNote.setText(dbHandler.searchById(card_id));
+
+
+    }
 }

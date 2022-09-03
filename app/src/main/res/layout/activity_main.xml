@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="300dp"
             android:layout_marginTop="128dp"
-            android:src="@drawable/no_internet" />
+            android:src="@drawable/no_connection" />
 
         <TextView
             android:id="@+id/no_internet_heading"
@@ -60,7 +60,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/no_internet_text"
             android:layout_centerHorizontal="true"
-            android:backgroundTint="@color/black"
             android:paddingHorizontal="32dp"
             android:text="Try Again"
             android:textAllCaps="false"
