@@ -7,11 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,17 +44,20 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder> adapter;
 
+    RelativeLayout internetLayout;
+    RelativeLayout noInternetLayout;
+    Button tryAgain;
 
 
-    public class GetData extends AsyncTask<String,String,String>{
+    public class GetData extends AsyncTask<String, String, String> {
 
         @Override
-        protected String doInBackground(String... strings){
+        protected String doInBackground(String... strings) {
             String current = "";
 
-            try{
+            try {
                 URL myURL = new URL("https://the-cocktail-db.p.rapidapi.com/popular.php");
-                HttpURLConnection URLConnection = (HttpURLConnection)myURL.openConnection();
+                HttpURLConnection URLConnection = (HttpURLConnection) myURL.openConnection();
 
                 URLConnection.setRequestMethod("GET");
                 URLConnection.setRequestProperty("X-RapidAPI-Key", "b7cf5674d2msh55f4729e9490592p155a7bjsn5e40837bff16");
@@ -61,15 +67,14 @@ public class MainActivity extends AppCompatActivity {
                 InputStreamReader isr = new InputStreamReader(is);
 
                 int data = isr.read();
-                while(data != -1){
+                while (data != -1) {
                     current += (char) data;
                     data = isr.read();
                 }
                 return current;
 
 
-            }
-             catch (ProtocolException e) {
+            } catch (ProtocolException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -79,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         @Override
-        protected void onPostExecute(String s){
-            try{
+        protected void onPostExecute(String s) {
+            try {
                 JSONObject ob = new JSONObject(s);
                 JSONArray a = ob.getJSONArray("drinks");
                 for (int i = 0; i < a.length(); i++) {
@@ -94,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     cocktailList.add(model);
                 }
 
-            }catch (JSONException e){
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
             PutDataIntoRecyclerView(cocktailList);
@@ -103,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void PutDataIntoRecyclerView(List<CocktailModelClass> cocktailList){
-        RecyclerAdapter adapter = new RecyclerAdapter(this,cocktailList);
+    private void PutDataIntoRecyclerView(List<CocktailModelClass> cocktailList) {
+        RecyclerAdapter adapter = new RecyclerAdapter(this, cocktailList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
@@ -115,15 +120,48 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        internetLayout = findViewById(R.id.internetLayout);
+        noInternetLayout = findViewById(R.id.noInternetLayout);
+        tryAgain = findViewById(R.id.try_again_button);
 
         recyclerView = findViewById(R.id.recycler_view);
         cocktailList = new ArrayList<>();
+
+        if(isConnected()){
+            internetLayout.setVisibility(View.VISIBLE);
+            noInternetLayout.setVisibility(View.INVISIBLE);
+        }
+        else{
+            noInternetLayout.setVisibility(View.VISIBLE);
+            internetLayout.setVisibility(View.INVISIBLE);
+        }
+        tryAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recreate();
+                }
+            });
+
+
 
 
         GetData getData = new GetData();
         getData.execute();
 
+
+    }
+
+
+    boolean isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if (networkInfo != null) {
+            return networkInfo.isConnected();
+        }
+        else{
+            return false;
+        }
 
     }
 }
