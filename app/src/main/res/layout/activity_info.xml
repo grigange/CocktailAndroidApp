@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#CACACA"
+        android:background="@color/material_on_background_emphasis_medium"
         android:isScrollContainer="true"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
-            app:cardBackgroundColor="@color/design_default_color_on_primary"
+            android:background="@color/material_on_background_emphasis_high_type"
             app:cardCornerRadius="10dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="false">
@@ -57,7 +57,6 @@
                         android:text=""
                         android:id="@+id/title"
                         android:textAlignment="center"
-                        android:textColor="#131313"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -91,7 +90,6 @@
                                     android:layout_margin="5dp"
                                     android:layout_weight="1"
                                     android:padding="5dp"
-                                    android:textColor="#131313"
                                     android:text="" />
                             </LinearLayout>
                         </ScrollView>
@@ -111,7 +109,6 @@
                             android:layout_marginBottom="5dp"
                             android:text="Ingredients"
                             android:textAlignment="center"
-                            android:textColor="#131313"
                             android:textSize="20sp"
                             android:textStyle="italic" />
 
@@ -129,7 +126,6 @@
                         android:layout_marginBottom="5dp"
                         android:text="Recipe"
                         android:textAlignment="center"
-                        android:textColor="#131313"
                         android:textSize="20sp"
                         android:textStyle="italic" />
 
@@ -150,7 +146,6 @@
                                 android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:textColor="#131313"
 
                                 android:text="" />
                         </LinearLayout>
@@ -162,7 +157,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Your Notes "
-                        android:textColor="#131313"
 
                         android:textAlignment="center"/>
 
@@ -173,7 +167,6 @@
                         android:layout_height="34dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:textColor="#131313"
 
                         android:padding="5dp">
 
