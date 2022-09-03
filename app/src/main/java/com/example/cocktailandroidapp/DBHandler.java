@@ -79,12 +79,13 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
 
-    public void updateNote(String originalNote, String note) {
+    public void updateNote(String originalNote, String note,String id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         values.put(NAME_COL, note);
+        values.put(CARD_ID_COL, id);
 
 
         db.update(TABLE_NAME, values, "myComment=?", new String[]{originalNote});
