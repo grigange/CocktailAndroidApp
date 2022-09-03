@@ -38,7 +38,7 @@ public class CommentActivity extends AppCompatActivity {
         String comm = dbHandler.searchById(card_id);
         Log.i("DP HANDLER",comm);
 
-        if(true){
+        if(comm == ""){
             addNoteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -49,7 +49,7 @@ public class CommentActivity extends AppCompatActivity {
                         Toast.makeText(CommentActivity.this, "Please type something", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    dbHandler.addNewComment(card_id,finalComment);
+                    dbHandler.addNewNote(card_id,finalComment);
 
                     Toast.makeText(CommentActivity.this, "Note has been added 🍸", Toast.LENGTH_SHORT).show();
                     //Intent i = new Intent(CommentActivity.this, InfoActivity.class);

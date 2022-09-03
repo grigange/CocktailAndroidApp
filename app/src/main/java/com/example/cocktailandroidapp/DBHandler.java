@@ -31,7 +31,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
 
-    public void addNewComment(String id,String comment) {
+    public void addNewNote(String id,String comment) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -64,15 +64,16 @@ public class DBHandler extends SQLiteOpenHelper {
     public String searchById(String str){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursorCourses = db.rawQuery("SELECT * FROM comments WHERE cardID=? ", new String[] {str});
-        //Cursor cursorCourses = db.rawQuery("SELECT * FROM "+ TABLE_NAME, null);
-        String comm = "";
-        cursorCourses.moveToFirst();
-        comm = cursorCourses.getString(2);
-        if (comm == ""){
-            return "";
+        if (cursorCourses.moveToFirst() && cursorCourses.getCount() > 0){
+            String comm = "";
+            //cursorCourses.moveToFirst();
+            comm = cursorCourses.getString(2);
+            cursorCourses.close();
+            return comm;
         }
-        cursorCourses.close();
-        return comm;
+        //Cursor cursorCourses = db.rawQuery("SELECT * FROM "+ TABLE_NAME, null);
+
+        return "";
 
 
     }

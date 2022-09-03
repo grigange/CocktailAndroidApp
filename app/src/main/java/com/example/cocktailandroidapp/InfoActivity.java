@@ -49,7 +49,6 @@ public class InfoActivity extends AppCompatActivity {
             note = CommentsInfoArrayList.get(0);
 
         }*/
-
         theNote.setText(dbHandler.searchById(card_id));
         theNote.setGravity(Gravity.CENTER);
 
