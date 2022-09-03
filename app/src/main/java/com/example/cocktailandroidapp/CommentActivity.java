@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -33,6 +35,8 @@ public class CommentActivity extends AppCompatActivity {
         CommentsInfoArrayList = new ArrayList<>();
         CommentsInfoArrayList = dbHandler.readComments();
 
+
+
         Intent intent = getIntent();
         String card_id = intent.getStringExtra("ID_REQ");
         String comm = dbHandler.searchById(card_id);
@@ -52,22 +56,22 @@ public class CommentActivity extends AppCompatActivity {
                     dbHandler.addNewNote(card_id,finalComment);
 
                     Toast.makeText(CommentActivity.this, "Note has been added 🍸", Toast.LENGTH_SHORT).show();
-                    //Intent i = new Intent(CommentActivity.this, InfoActivity.class);
-                    //startActivity(i);
-                    finish();
+                    Intent i = new Intent(CommentActivity.this, InfoActivity.class);
+                    startActivity(i);
+                   // finish();
 
                 }
             });
         }
         else{
-            CommentsInfo note = CommentsInfoArrayList.get(0);
-            theNote.setText(note.getComment());
+
+            theNote.setText(dbHandler.searchById(card_id));
             addNoteBtn.setText("Update Notes");
             addNoteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String finalComment = theNote.getText().toString();
-                    dbHandler.updateNote(note.getComment(),finalComment);
+                    dbHandler.updateNote(dbHandler.searchById(card_id),finalComment, card_id);
 
 
                     Toast.makeText(CommentActivity.this, "Note Updated 🍸", Toast.LENGTH_SHORT).show();
