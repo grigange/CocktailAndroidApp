@@ -2,9 +2,16 @@ package com.example.cocktailandroidapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Shader;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -40,6 +47,9 @@ public class InfoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String card_id = intent.getStringExtra("ID_REQ");
+        String image_url = intent.getStringExtra("IMAGE_URL");
+        String title = intent.getStringExtra("TITLE");
+        String glass = intent.getStringExtra("GLASS");
 
         CommentsInfoArrayList = new ArrayList<>();
         dbHandler = new DBHandler(InfoActivity.this);
@@ -59,6 +69,11 @@ public class InfoActivity extends AppCompatActivity {
         ImageView view_img = (ImageView)findViewById(R.id.img);
         TextView view_desc = (TextView)findViewById(R.id.desc);
         TextView view_recipe = (TextView)findViewById(R.id.recipe);
+
+        view_title.setText(title);
+        view_desc.setText(glass);
+        Picasso.get().load(image_url).resize(450, 450)
+                .centerCrop().placeholder(R.drawable.ic_launcher_foreground).transform(new RoundedImage(10,10)).into(view_img);
 
         OkHttpClient client = new OkHttpClient();
 
@@ -93,7 +108,7 @@ public class InfoActivity extends AppCompatActivity {
 
                             //getting first and last name
                             String title = null;
-                            try {
+                            /*try {
                                 title = ob.getJSONArray("drinks").getJSONObject(0).getString("strDrink");
                                 view_title.setText(title);
                                 view_title.setVisibility(View.VISIBLE);
@@ -107,14 +122,14 @@ public class InfoActivity extends AppCompatActivity {
                                         .centerCrop().placeholder(R.drawable.ic_launcher_foreground).into(view_img);
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                            }
-                            String desc = null;
+                            }*/
+                            /*String desc = null;
                             try {
-                                desc = ob.getJSONArray("drinks").getJSONObject(0).getString("strIngredient1");
+                                desc = ob.getJSONArray("drinks").getJSONObject(0).getString("strTags");
                                 view_desc.setText(desc);
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                            }
+                            }*/
                             String recipe = null;
                             try {
                                 recipe = ob.getJSONArray("drinks").getJSONObject(0).getString("strInstructions");
@@ -138,6 +153,11 @@ public class InfoActivity extends AppCompatActivity {
 
                 Intent i = new Intent(InfoActivity.this, CommentActivity.class);
                 i.putExtra("ID_REQ",card_id);
+                i.putExtra("IMAGE_URL",image_url);
+                i.putExtra("TITLE",title);
+                /*ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(InfoActivity.this, (View)view_img, "image");
+                v.getContext().startActivity(i, options.toBundle());*/
                 startActivity(i);
             }
         });

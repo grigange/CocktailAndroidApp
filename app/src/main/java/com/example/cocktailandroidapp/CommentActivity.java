@@ -51,66 +51,20 @@ public class CommentActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String card_id = intent.getStringExtra("ID_REQ");
+        String image_url = intent.getStringExtra("IMAGE_URL");
+        String title = intent.getStringExtra("TITLE");
 
         addNoteBtn = findViewById(R.id.button7);
         dbHandler = new DBHandler(CommentActivity.this);
         CommentsInfoArrayList = new ArrayList<>();
         CommentsInfoArrayList = dbHandler.readComments();
 
+        title_comment.setText(title);
+        Picasso.get().load(image_url).resize(450, 450)
+                .centerCrop().transform(new RoundedImage(10,10)).into(image_comment);
 
-        OkHttpClient client = new OkHttpClient();
 
-        Request request = new Request.Builder()
-                .url("https://the-cocktail-db.p.rapidapi.com/lookup.php?i=" + card_id )
-                .get()
-                .addHeader("X-RapidAPI-Key", "b7cf5674d2msh55f4729e9490592p155a7bjsn5e40837bff16")
-                .addHeader("X-RapidAPI-Host", "the-cocktail-db.p.rapidapi.com")
-                .build();
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful()){
-                    String myResponse = response.body().string();
-                    Log.i("MYSDY**************",myResponse);
-                    CommentActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            JSONObject ob = null;
-                            try {
-                                ob = new JSONObject(myResponse);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                            //getting first and last name
-                            String title = null;
-                            try {
-                                title = ob.getJSONArray("drinks").getJSONObject(0).getString("strDrink");
-                                title_comment.setText(title);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            String img = null;
-                            try {
-                                img = ob.getJSONArray("drinks").getJSONObject(0).getString("strDrinkThumb");
-                                Picasso.get().load(img).resize(300, 300)
-                                        .centerCrop().placeholder(R.drawable.ic_launcher_foreground).into(image_comment);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                }
-
-            }
-        });
 
 
         String comm = dbHandler.searchById(card_id);
@@ -138,14 +92,14 @@ public class CommentActivity extends AppCompatActivity {
             });
         }
         else{
-            CommentsInfo note = CommentsInfoArrayList.get(0);
-            theNote.setText(note.getComment());
+
+            theNote.setText(dbHandler.searchById(card_id));
             addNoteBtn.setText("Update Notes");
             addNoteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String finalComment = theNote.getText().toString();
-                    dbHandler.updateNote(note.getComment(),finalComment);
+                    dbHandler.updateNote(dbHandler.searchById(card_id),finalComment, card_id);
 
 
                     Toast.makeText(CommentActivity.this, "Note Updated 🍸", Toast.LENGTH_SHORT).show();
@@ -153,6 +107,7 @@ public class CommentActivity extends AppCompatActivity {
 
                     //Intent i = new Intent(CommentActivity.this, InfoActivity.class);
                     //startActivity(i);
+                    //supportFinishAfterTransition();
                     finish();
                 }
             });
@@ -172,6 +127,7 @@ public class CommentActivity extends AppCompatActivity {
 
                 //Intent i = new Intent(CommentActivity.this, InfoActivity.class);
                 //startActivity(i);
+                //supportFinishAfterTransition();
                 finish();
             }
         });

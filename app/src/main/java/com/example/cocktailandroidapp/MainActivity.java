@@ -96,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
                     model.setId(item.getString("idDrink"));
                     model.setTitle(item.getString("strDrink"));
                     model.setImg(item.getString("strDrinkThumb"));
-                    model.setDesc(item.getString("strIngredient1"));
+                    model.setDesc(item.getString("strGlass"));
+                    Log.i("STRTAGS",item.getString("strGlass"));
 
                     cocktailList.add(model);
                 }
