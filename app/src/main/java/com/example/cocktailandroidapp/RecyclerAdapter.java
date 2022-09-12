@@ -71,6 +71,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     }
 
+
+    @Override
+    public void onViewDetachedFromWindow(@NonNull ViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.slide_out_row);
+        holder.itemView.startAnimation(animation);
+    }
+
+    @Override
+    public int findRelativeAdapterPositionIn(@NonNull RecyclerView.Adapter<? extends RecyclerView.ViewHolder> adapter, @NonNull RecyclerView.ViewHolder viewHolder, int localPosition) {
+        return super.findRelativeAdapterPositionIn(adapter, viewHolder, localPosition);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.slide_in_row);
@@ -89,7 +102,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.itemTitle.setText(mData.get(position).getTitle());
         holder.itemDetail.setText(finalGlass);
         Picasso.get().load(mData.get(position).getImg())
-                .placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(10,10)).resize(300, 300).centerCrop().into(holder.itemImage);
+                .placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(20,10)).resize(300, 300).centerCrop().into(holder.itemImage);
 
         holder.itemButton.setOnClickListener(new View.OnClickListener() {
 

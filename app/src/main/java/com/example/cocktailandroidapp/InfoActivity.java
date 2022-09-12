@@ -81,7 +81,7 @@ public class InfoActivity extends AppCompatActivity {
         view_title.setText(title);
         view_desc.setText(glass);
         Picasso.get().load(image_url).resize(450, 450)
-                .centerCrop().placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(10,10)).into(view_img);
+                .centerCrop().placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(50,10)).into(view_img);
 
         OkHttpClient client = new OkHttpClient();
 

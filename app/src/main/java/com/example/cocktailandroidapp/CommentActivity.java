@@ -59,8 +59,8 @@ public class CommentActivity extends AppCompatActivity {
         dbHandler = new DBHandler(CommentActivity.this);
 
         title_comment.setText(title);
-        Picasso.get().load(image_url).resize(450, 450)
-                .centerCrop().placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(10,10)).into(image_comment);
+        Picasso.get().load(image_url).resize(700, 700)
+                .centerCrop().placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(80,10)).into(image_comment);
 
 
 
