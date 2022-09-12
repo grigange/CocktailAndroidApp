@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -47,31 +46,16 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<CommentsInfo> readComments() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursorCourses = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        ArrayList<CommentsInfo> CommentsInfoArrayList = new ArrayList<>();
-        if (cursorCourses.moveToFirst()) {
-            do {
-                // on below line we are adding the data from cursor to our array list.
-                CommentsInfoArrayList.add(new CommentsInfo(cursorCourses.getString(1),cursorCourses.getString(2)));
-            } while (cursorCourses.moveToNext());
-        }
-        cursorCourses.close();
-        return CommentsInfoArrayList;
-    }
 
     public String searchById(String str){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursorCourses = db.rawQuery("SELECT * FROM comments WHERE cardID=? ", new String[] {str});
         if (cursorCourses.moveToFirst() && cursorCourses.getCount() > 0){
             String comm = "";
-            //cursorCourses.moveToFirst();
             comm = cursorCourses.getString(2);
             cursorCourses.close();
             return comm;
         }
-        //Cursor cursorCourses = db.rawQuery("SELECT * FROM "+ TABLE_NAME, null);
 
         return "";
 

@@ -2,25 +2,17 @@ package com.example.cocktailandroidapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-import java.util.ArrayList;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -29,7 +21,6 @@ import okhttp3.Response;
 
 public class InfoActivity extends AppCompatActivity {
 
-    private ArrayList<CommentsInfo> CommentsInfoArrayList;
     private DBHandler dbHandler;
 
     @Override
@@ -41,18 +32,9 @@ public class InfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String card_id = intent.getStringExtra("ID_REQ");
 
-        CommentsInfoArrayList = new ArrayList<>();
+
         dbHandler = new DBHandler(InfoActivity.this);
-        /*CommentsInfo note = new CommentsInfo(card_id,"");
-        if (!CommentsInfoArrayList.isEmpty()){
-            CommentsInfoArrayList = dbHandler.readComments();
-            note = CommentsInfoArrayList.get(0);
-
-        }*/
         theNote.setText(dbHandler.searchById(card_id));
-        theNote.setGravity(Gravity.CENTER);
-
-
 
 
         TextView view_title = (TextView)findViewById(R.id.title);
@@ -130,7 +112,14 @@ public class InfoActivity extends AppCompatActivity {
         });
 
 
-        Button button1= (Button)findViewById(R.id.button7);
+        Button button1= (Button)findViewById(R.id.addNoteBTN);
+        if(dbHandler.searchById(card_id) != ""){
+            button1.setText("UPDATE NOTES");
+
+        }
+
+
+
         button1.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -142,7 +131,7 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
-        Button button2= (Button)findViewById(R.id.button5);
+        Button button2= (Button)findViewById(R.id.cancelBTN);
         button2.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -158,6 +147,13 @@ public class InfoActivity extends AppCompatActivity {
         String card_id = intent.getStringExtra("ID_REQ");
         TextView theNote= (TextView)findViewById(R.id.notes) ;
         theNote.setText(dbHandler.searchById(card_id));
+        Button button1 = (Button)findViewById(R.id.addNoteBTN);
+        if(dbHandler.searchById(card_id) != ""){
+            button1.setText("UPDATE NOTES");
+
+        }
+
+
 
 
     }
