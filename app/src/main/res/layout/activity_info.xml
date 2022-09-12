@@ -98,8 +98,12 @@
                             android:textStyle="italic" />
 
                         <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/igr_list"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"
+                            android:layout_gravity="left">
+
+                        </androidx.recyclerview.widget.RecyclerView>
 
                     </LinearLayout>
 

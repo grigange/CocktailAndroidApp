@@ -85,8 +85,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         String finalGlass = emoji + glass;
         holder.itemTitle.setText(mData.get(position).getTitle());
         holder.itemDetail.setText(finalGlass);
-        Picasso.get().load(mData.get(position).getImg()).resize(300, 300)
-                .centerCrop().placeholder(R.drawable.ic_launcher_foreground).transform(new RoundedImage(10,10)).into(holder.itemImage);
+        Picasso.get().load(mData.get(position).getImg())
+                .placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(10,10)).resize(300, 300).centerCrop().into(holder.itemImage);
 
         holder.itemButton.setOnClickListener(new View.OnClickListener() {
 

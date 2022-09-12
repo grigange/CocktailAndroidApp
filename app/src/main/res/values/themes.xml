@@ -8,9 +8,9 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:textColor">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/gray_l_100</item>
+        <item name="colorSecondary">@color/gray_d_100</item>
         <item name="colorSecondaryVariant">@color/blue_700</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/gray_d_200</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

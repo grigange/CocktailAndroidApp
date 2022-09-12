@@ -57,7 +57,7 @@ public class CommentActivity extends AppCompatActivity {
 
         title_comment.setText(title);
         Picasso.get().load(image_url).resize(450, 450)
-                .centerCrop().transform(new RoundedImage(10,10)).into(image_comment);
+                .centerCrop().placeholder(R.drawable.cocktail_loading).transform(new RoundedImage(10,10)).into(image_comment);
 
 
 

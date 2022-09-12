@@ -3,6 +3,8 @@ package com.example.cocktailandroidapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +16,7 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +41,9 @@ public class InfoActivity extends AppCompatActivity {
 
     private ArrayList<CommentsInfo> CommentsInfoArrayList;
     private DBHandler dbHandler;
+    RecyclerView list;
+    RecyclerView.LayoutManager list_layout = new LinearLayoutManager(this);
+    RecyclerView.Adapter list_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +73,13 @@ public class InfoActivity extends AppCompatActivity {
         ImageView view_img = (ImageView)findViewById(R.id.img);
         TextView view_desc = (TextView)findViewById(R.id.desc);
         TextView view_recipe = (TextView)findViewById(R.id.recipe);
+        list = findViewById(R.id.igr_list);
+
 
         view_title.setText(title);
         view_desc.setText(glass);
         Picasso.get().load(image_url).resize(450, 450)
-                .centerCrop().placeholder(R.drawable.ic_launcher_foreground).transform(new RoundedImage(10,10)).into(view_img);
+                .centerCrop().placeholder(R.drawable.cocktail_loading).transform(new RoundedImage(10,10)).into(view_img);
 
         OkHttpClient client = new OkHttpClient();
 
@@ -97,41 +105,31 @@ public class InfoActivity extends AppCompatActivity {
                     InfoActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            JSONObject ob = null;
-                            try {
-                                ob = new JSONObject(myResponse);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
 
-                            //getting first and last name
-                            String title = null;
-                            /*try {
-                                title = ob.getJSONArray("drinks").getJSONObject(0).getString("strDrink");
-                                view_title.setText(title);
-                                view_title.setVisibility(View.VISIBLE);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            String img = null;
                             try {
-                                img = ob.getJSONArray("drinks").getJSONObject(0).getString("strDrinkThumb");
-                                Picasso.get().load(img).resize(300, 300)
-                                        .centerCrop().placeholder(R.drawable.ic_launcher_foreground).into(view_img);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }*/
-                            /*String desc = null;
-                            try {
-                                desc = ob.getJSONArray("drinks").getJSONObject(0).getString("strTags");
-                                view_desc.setText(desc);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }*/
-                            String recipe = null;
-                            try {
+                                JSONObject ob = null;
+                                ob = new JSONObject(myResponse);
+                                String recipe = null;
                                 recipe = ob.getJSONArray("drinks").getJSONObject(0).getString("strInstructions");
+                                int i = 1;
+                                ArrayList<String> Igredients = new ArrayList<String>();
+                                while (i < 15) {
+                                    String meas = ob.getJSONArray("drinks").getJSONObject(0).getString("strMeasure" + i);
+                                    String igr = ob.getJSONArray("drinks").getJSONObject(0).getString("strIngredient" + i);
+                                    if (igr.isEmpty() || igr == "null"){
+                                        i = 50;
+                                    }else{
+                                        Igredients.add("\u2022  " +   meas + "  "+ igr);
+                                        Log.i("IGR",meas + igr);
+                                    }
+                                    i++;
+                                }
+                                ListAdapter adapter = new ListAdapter(Igredients);
+                                list.setLayoutManager(list_layout);
+                                list.setAdapter(adapter);
                                 view_recipe.setText(recipe);
+
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
