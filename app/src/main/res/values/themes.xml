@@ -6,7 +6,7 @@
         <item name="colorPrimary">#9C86B8</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">#302033</item>
-        <item name="android:textColor">@color/purple_100</item>
+        <item name="android:textColor">@color/black</item>
 
 
         <item name="btnColor">@color/l_primary</item>
