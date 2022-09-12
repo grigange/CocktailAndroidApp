@@ -22,7 +22,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp"
-        android:background="@color/gray_l_100">
+        android:background="?attr/backgroundColor2">
 
         <ImageView
             android:id="@+id/item_image"
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="@color/purple_100"
+                android:textColor="?attr/txtColor"
                 android:padding="5dp"
                 android:text="123" />
 
@@ -68,6 +68,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:gravity="center"
+                android:backgroundTint="?attr/btnColor"
                 android:text="More info"/>
         </LinearLayout>
 

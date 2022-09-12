@@ -3,26 +3,23 @@
     <style name="Theme.CocktailAndroidApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!-- Primary brand color. -->
-        <item name="colorPrimary">?android:attr/detailsElementBackground</item>
+        <item name="colorPrimary">#9C86B8</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="colorOnPrimary">#302033</item>
+        <item name="android:textColor">@color/purple_100</item>
+
+
+        <item name="btnColor">#C0A4E6</item>
+        <item name="txtColor">@color/purple_100</item>
+        <item name="backgroundColor">@color/white</item>
+        <item name="backgroundColor2">#FBEBFF</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/gray_d_100</item>
+        <item name="colorSecondary">#80658E</item>
         <item name="colorSecondaryVariant">@color/blue_700</item>
         <item name="colorOnSecondary">@color/gray_d_200</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" >#FFFFFF</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowContentTransitions">true</item>
     </style>
 
-    <style name="Theme.CocktailAndroidApp.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.CocktailAndroidApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.CocktailAndroidApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

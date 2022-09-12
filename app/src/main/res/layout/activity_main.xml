@@ -5,8 +5,9 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_on_background_emphasis_medium"
+    android:background="?attr/backgroundColor"
     tools:context=".MainActivity">
+
 
     <RelativeLayout
         android:id="@+id/internetLayout"
@@ -17,9 +18,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/black"
-            android:paddingVertical="10dp"
-            android:layoutAnimation="@anim/layout_animation"/>
+            android:paddingVertical="10dp" />
     </RelativeLayout>
 
     <RelativeLayout
