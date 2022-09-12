@@ -145,7 +145,11 @@ public class InfoActivity extends AppCompatActivity {
         });
 
 
-        Button button1= (Button)findViewById(R.id.button7);
+        Button button1= (Button)findViewById(R.id.addNoteBTN);
+        if(dbHandler.searchById(card_id) != ""){
+            button1.setText("UPDATE NOTES");
+
+        }
         button1.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -162,7 +166,7 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
-        Button button2= (Button)findViewById(R.id.button5);
+        Button button2= (Button)findViewById(R.id.cancelBTN);
         button2.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -178,6 +182,11 @@ public class InfoActivity extends AppCompatActivity {
         String card_id = intent.getStringExtra("ID_REQ");
         TextView theNote= (TextView)findViewById(R.id.notes) ;
         theNote.setText(dbHandler.searchById(card_id));
+        Button button1= (Button)findViewById(R.id.addNoteBTN);
+        if(dbHandler.searchById(card_id) != ""){
+            button1.setText("UPDATE NOTES");
+
+        }
 
 
     }
