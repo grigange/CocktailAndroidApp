@@ -5,6 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
     tools:context=".InfoActivity">
 
     <LinearLayout
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/backgroundColor"
+
         android:isScrollContainer="true"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,6 +27,7 @@
             android:layout_margin="5dp"
             app:cardCornerRadius="10dp"
             app:cardPreventCornerOverlap="true"
+            app:cardBackgroundColor="?attr/backgroundColor2"
             app:cardUseCompatPadding="false">
 
             <!--
@@ -43,11 +46,11 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:background="?attr/backgroundColor2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:background="?attr/backgroundColor2"
                     android:padding="10dp">
 
                     <TextView
@@ -168,6 +171,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="174dp"
                         android:gravity="center"
+                        android:background="?attr/backgroundColor2"
                         android:orientation="horizontal">
 
                         <Button
