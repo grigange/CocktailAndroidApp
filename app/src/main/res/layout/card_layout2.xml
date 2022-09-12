@@ -22,7 +22,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp"
-        android:background="?attr/backgroundColor2">
+        android:background="?attr/backgroundColorCard">
 
         <ImageView
             android:id="@+id/item_image"
@@ -49,6 +49,7 @@
                 android:layout_marginBottom="5dp"
                 android:text="@string/item_title"
                 android:textAlignment="center"
+                android:textColor="?attr/txtColor"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -57,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="?attr/txtColor"
+                android:textColor="?attr/txtColorSecondary"
                 android:padding="5dp"
                 android:text="123" />
 

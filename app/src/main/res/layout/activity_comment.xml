@@ -43,7 +43,7 @@
                     android:gravity="center"
                     android:isScrollContainer="true"
                     android:orientation="vertical"
-                    android:background="?attr/backgroundColor2"
+                    android:background="?attr/backgroundColorCard"
                     android:padding="10dp">
 
                     <TextView
@@ -55,6 +55,7 @@
                         android:textAlignment="center"
                         android:textSize="25sp"
                         android:textStyle="bold"
+                        android:textColor="?attr/txtColor"
                         android:transitionName="title"/>
 
                     <Space
@@ -83,6 +84,7 @@
                         android:hint="Add your notes here"
                         android:textAlignment="viewStart"
                         app:boxCornerRadiusTopEnd="10dp"
+
                         app:boxCornerRadiusTopStart="10dp">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -90,7 +92,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="241dp"
                             android:gravity="top"
-
+                            android:textColor="?attr/txtColorSecondary"
+                            android:background="?attr/backgroundColor"
                             android:minLines="3"
                             android:padding="30dp"
                             tools:layout_margin="10dp" />

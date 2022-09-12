@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="txtColor" format="color"/>
+    <attr name="txtColorSecondary" format="color"/>
     <attr name="backgroundColor" format="color"/>
-    <attr name="backgroundColor2" format="color"/>
+    <attr name="backgroundColorCard" format="color"/>
     <attr name="btnColor" format="color"/>
 
 </resources>

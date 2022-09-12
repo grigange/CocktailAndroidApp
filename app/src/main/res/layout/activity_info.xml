@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:background="?attr/backgroundColor2"
+                    android:background="?attr/backgroundColorCard"
                     android:padding="10dp">
 
                     <TextView
@@ -60,6 +60,7 @@
                         android:textAlignment="center"
                         android:textSize="25sp"
                         android:textStyle="bold"
+                        android:textColor="?attr/txtColor"
                         android:transitionName="title"/>
 
                         <ImageView
@@ -80,7 +81,7 @@
                                     android:layout_margin="5dp"
                                     android:layout_weight="1"
                                     android:padding="5dp"
-                                    android:textColor="?attr/txtColor"
+                                    android:textColor="?attr/txtColorSecondary"
                                     android:text="" />
 
                     <LinearLayout
@@ -97,7 +98,8 @@
                             android:text="Ingredients"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            android:textStyle="italic" />
+                            android:textStyle="italic"
+                            android:textColor="?attr/txtColor"/>
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/igr_list"
@@ -118,6 +120,7 @@
                         android:text="Recipe"
                         android:textAlignment="center"
                         android:textSize="20sp"
+                        android:textColor="?attr/txtColor"
                         android:textStyle="italic" />
 
                     <ScrollView
@@ -137,7 +140,7 @@
                                 android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:textColor="?attr/txtColor"
+                                android:textColor="?attr/txtColorSecondary"
 
                                 android:text="" />
                         </LinearLayout>
@@ -151,6 +154,7 @@
                         android:text="Your Notes "
                         android:textAlignment="center"
                         android:textSize="20sp"
+                        android:textColor="?attr/txtColor"
                         android:textStyle="italic" />
 
 
@@ -160,7 +164,7 @@
                         android:layout_height="44dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:textColor="?attr/txtColor"
+                        android:textColor="?attr/txtColorSecondary"
                         android:padding="5dp">
 
                     </TextView>

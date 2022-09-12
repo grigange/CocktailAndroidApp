@@ -9,16 +9,17 @@
         <item name="android:textColor">@color/purple_100</item>
 
 
-        <item name="btnColor">#C0A4E6</item>
-        <item name="txtColor">@color/purple_100</item>
-        <item name="backgroundColor">@color/white</item>
-        <item name="backgroundColor2">#FBEBFF</item>
+        <item name="btnColor">@color/l_primary</item>
+        <item name="txtColor">@color/l_text</item>
+        <item name="txtColorSecondary">@color/l_text_secondary</item>
+        <item name="backgroundColor">@color/l_bg</item>
+        <item name="backgroundColorCard">@color/l_card</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#80658E</item>
         <item name="colorSecondaryVariant">@color/blue_700</item>
         <item name="colorOnSecondary">@color/gray_d_200</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >#FFFFFF</item>
+        <item name="android:statusBarColor" >@color/l_bg</item>
         <!-- Customize your theme here. -->
     </style>
 
