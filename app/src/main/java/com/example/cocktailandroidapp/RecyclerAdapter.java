@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import androidx.core.util.Pair;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
@@ -11,7 +12,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,11 +101,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 i.putExtra("IMAGE_URL",mData.get(position).getImg());
                 i.putExtra("TITLE",mData.get(position).getTitle());
                 i.putExtra("GLASS", finalGlass);
-                Pair<View, String> title = Pair.create((View)v.findViewById(R.id.item_title), "text");
+                /*Pair<View, String> title = Pair.create((View)v.findViewById(R.id.item_title), "text");
                 Pair<View, String> image = Pair.create((View)v.findViewById(R.id.item_image), "image");
-                /*ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation((Activity)v.getContext(),title,image);*/
-                v.getContext().startActivity(i, /*options.toBundle()*/null);
+                Pair<View, String> desc = Pair.create((View)v.findViewById(R.id.item_details), "desc");
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(v.getContext(),title,image,desc);*/
+                v.getContext().startActivity(i/*, options.toBundle()*/);
             }
         });
         holder.itemView.startAnimation(animation);

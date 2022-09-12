@@ -49,6 +49,9 @@ public class CommentActivity extends AppCompatActivity {
         title_comment = findViewById(R.id.title_comment);
         image_comment = findViewById(R.id.image_comment);
 
+
+        supportPostponeEnterTransition();
+
         Intent intent = getIntent();
         String card_id = intent.getStringExtra("ID_REQ");
         String image_url = intent.getStringExtra("IMAGE_URL");
@@ -57,7 +60,7 @@ public class CommentActivity extends AppCompatActivity {
 
         title_comment.setText(title);
         Picasso.get().load(image_url).resize(450, 450)
-                .centerCrop().placeholder(R.drawable.cocktail_loading).transform(new RoundedImage(10,10)).into(image_comment);
+                .centerCrop().placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(10,10)).into(image_comment);
 
 
 

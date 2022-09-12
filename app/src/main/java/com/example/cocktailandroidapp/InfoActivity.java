@@ -3,6 +3,8 @@ package com.example.cocktailandroidapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -79,7 +81,7 @@ public class InfoActivity extends AppCompatActivity {
         view_title.setText(title);
         view_desc.setText(glass);
         Picasso.get().load(image_url).resize(450, 450)
-                .centerCrop().placeholder(R.drawable.cocktail_loading).transform(new RoundedImage(10,10)).into(view_img);
+                .centerCrop().placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(10,10)).into(view_img);
 
         OkHttpClient client = new OkHttpClient();
 
@@ -155,10 +157,11 @@ public class InfoActivity extends AppCompatActivity {
                 i.putExtra("ID_REQ",card_id);
                 i.putExtra("IMAGE_URL",image_url);
                 i.putExtra("TITLE",title);
-                /*ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(InfoActivity.this, (View)view_img, "image");
-                v.getContext().startActivity(i, options.toBundle());*/
-                startActivity(i);
+
+                /*Pair<View, String> titleQ = Pair.create((View)v.findViewById(R.id.item_image), ViewCompat.getTransitionName((View)v.findViewById(R.id.item_image)));
+                Pair<View, String> imageQ = Pair.create((View)v.findViewById(R.id.item_image), "image");
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(InfoActivity.this,titleQ);*/
+                startActivity(i/*, options.toBundle()*/);
             }
         });
 

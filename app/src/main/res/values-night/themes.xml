@@ -14,6 +14,7 @@
         <item name="colorOnSecondary">@color/gray_d_200</item>
         <!-- Status bar color. -->
         <!-- Customize your theme here. -->
+        <item name="android:windowContentTransitions">true</item>
 
     </style>
 </resources>
