@@ -50,8 +50,6 @@ public class InfoActivity extends AppCompatActivity {
         String image_url = intent.getStringExtra("IMAGE_URL");
         String title = intent.getStringExtra("TITLE");
         String glass = intent.getStringExtra("GLASS");
-
-        CommentsInfoArrayList = new ArrayList<>();
         dbHandler = new DBHandler(InfoActivity.this);
         /*CommentsInfo note = new CommentsInfo(card_id,"");
         if (!CommentsInfoArrayList.isEmpty()){

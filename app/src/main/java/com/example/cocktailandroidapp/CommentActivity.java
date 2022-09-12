@@ -44,8 +44,8 @@ public class CommentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
-        theNote= findViewById(R.id.comments);
-        addNoteBtn = findViewById(R.id.button7);
+        theNote= findViewById(R.id.notes2);
+        addNoteBtn = findViewById(R.id.saveNotesBTN);
         title_comment = findViewById(R.id.title_comment);
         image_comment = findViewById(R.id.image_comment);
 
@@ -53,11 +53,7 @@ public class CommentActivity extends AppCompatActivity {
         String card_id = intent.getStringExtra("ID_REQ");
         String image_url = intent.getStringExtra("IMAGE_URL");
         String title = intent.getStringExtra("TITLE");
-
-        addNoteBtn = findViewById(R.id.button7);
         dbHandler = new DBHandler(CommentActivity.this);
-        CommentsInfoArrayList = new ArrayList<>();
-        CommentsInfoArrayList = dbHandler.readComments();
 
         title_comment.setText(title);
         Picasso.get().load(image_url).resize(450, 450)
@@ -118,7 +114,7 @@ public class CommentActivity extends AppCompatActivity {
 
 
 
-        Button button1= (Button)findViewById(R.id.button6);
+        Button button1= (Button)findViewById(R.id.cancelBTN2);
         button1.setOnClickListener(new View.OnClickListener() {
 
 

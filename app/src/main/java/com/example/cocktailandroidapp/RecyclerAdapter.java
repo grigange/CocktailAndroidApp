@@ -82,7 +82,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }else if (glass.equalsIgnoreCase("Highball glass")){
             emoji = "\uD83E\uDDCB  ";
         }
-
         String finalGlass = emoji + glass;
         holder.itemTitle.setText(mData.get(position).getTitle());
         holder.itemDetail.setText(finalGlass);
