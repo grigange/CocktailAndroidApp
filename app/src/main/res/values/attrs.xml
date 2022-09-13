@@ -5,5 +5,7 @@
     <attr name="backgroundColor" format="color"/>
     <attr name="backgroundColorCard" format="color"/>
     <attr name="btnColor" format="color"/>
+    <attr name="btnTxt" format="color"/>
+    <attr name="textedit" format="color"/>
 
 </resources>

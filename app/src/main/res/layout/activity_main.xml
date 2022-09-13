@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="300dp"
             android:layout_marginTop="128dp"
-            android:src="@drawable/no_connection_dark"
+            android:src="@drawable/no_connection_light"
             />
 
         <TextView
@@ -64,6 +64,8 @@
             android:layout_below="@id/no_internet_text"
             android:layout_centerHorizontal="true"
             android:paddingHorizontal="32dp"
+            android:backgroundTint="?attr/btnColor"
+            android:textColor="?attr/btnTxt"
             android:text="Try Again"
             android:textAllCaps="false"
             app:cornerRadius="16dp" />

@@ -12,6 +12,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- DARK MODE -->
+    <color name="d_notes">#110B15</color>
     <color name="d_primary">#9175B5</color> <!-- Primary -->
     <color name="d_text_secondary">#DFD2F0</color> <!-- Text Secondary -->
     <color name="d_bg">#FF000000</color> <!-- Background -->
@@ -19,6 +20,7 @@
     <color name="d_text">#FFFFFFFF</color> <!-- Text Main -->
 
     <!-- LIGHT MODE -->
+    <color name="l_notes">#E1CDFA</color>
     <color name="l_primary">#857CFF</color> <!-- Primary -->
     <color name="l_text_secondary">#483C5C</color> <!-- Text Secondary -->
     <color name="l_bg">#F4EAC4</color> <!-- Background -->
