@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+
+import androidx.cardview.widget.CardView;
 import androidx.core.util.Pair;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
@@ -50,12 +52,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         TextView itemTitle;
         TextView itemDetail;
         Button itemButton;
+        CardView itemCard;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             itemImage = itemView.findViewById(R.id.item_image);
             itemTitle = itemView.findViewById(R.id.item_title);
             itemDetail = itemView.findViewById(R.id.item_details);
             itemButton = itemView.findViewById(R.id.item_button);
+            itemCard = itemView.findViewById(R.id.card_view);
 
 
 
@@ -67,6 +71,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(mContext).inflate(R.layout.card_layout2, parent, false);
+
         return new ViewHolder(v);
 
     }
@@ -114,11 +119,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 i.putExtra("IMAGE_URL",mData.get(position).getImg());
                 i.putExtra("TITLE",mData.get(position).getTitle());
                 i.putExtra("GLASS", finalGlass);
-                /*Pair<View, String> title = Pair.create((View)v.findViewById(R.id.item_title), "text");
-                Pair<View, String> image = Pair.create((View)v.findViewById(R.id.item_image), "image");
-                Pair<View, String> desc = Pair.create((View)v.findViewById(R.id.item_details), "desc");
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(v.getContext(),title,image,desc);*/
-                v.getContext().startActivity(i/*, options.toBundle()*/);
+
+                Pair<View, String> card = Pair.create((View)holder.itemCard, "card");
+                Pair<View, String> title = Pair.create((View)holder.itemTitle, "title");
+                Pair<View, String> image = Pair.create((View)holder.itemImage, "image");
+                Pair<View, String> desc = Pair.create((View)holder.itemDetail, "desc");
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) mContext,card,desc,title,image);
+
+                v.getContext().startActivity(i, options.toBundle());
             }
         });
         holder.itemView.startAnimation(animation);

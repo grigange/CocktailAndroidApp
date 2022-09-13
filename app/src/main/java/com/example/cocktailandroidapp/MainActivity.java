@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         int currentNightMode = Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
-                image.setImageResource(R.drawable.no_connection);
+                image.setImageResource(R.drawable.no_connection_light);
                 break;
             case Configuration.UI_MODE_NIGHT_YES:
                 image.setImageResource(R.drawable.no_connection_dark);

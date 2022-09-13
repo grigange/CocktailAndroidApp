@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     android:id="@+id/card_view"
+    android:transitionName="card"
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -60,6 +61,7 @@
                 android:layout_gravity="center"
                 android:textColor="?attr/txtColorSecondary"
                 android:padding="5dp"
+                android:transitionName="desc"
                 android:text="123" />
 
             <Button

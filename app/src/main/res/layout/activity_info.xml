@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
+
             app:cardCornerRadius="10dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="false">
@@ -41,11 +42,12 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+
                 android:background="?attr/backgroundColorCard">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
@@ -58,7 +60,7 @@
                         android:layout_marginBottom="5dp"
                         android:text=""
                         android:textAlignment="center"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:textStyle="bold"
                         android:textColor="?attr/txtColor"
                         android:transitionName="title"/>
@@ -80,6 +82,7 @@
                                     android:layout_gravity="center"
                                     android:layout_margin="5dp"
                                     android:layout_weight="1"
+                                    android:transitionName="desc"
                                     android:padding="5dp"
                                     android:textColor="?attr/txtColorSecondary"
                                     android:text="" />
@@ -165,7 +168,8 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:textColor="?attr/txtColorSecondary"
-                        android:padding="5dp">
+                        android:padding="5dp"
+                        android:transitionName="notes">
 
                     </TextView>
 

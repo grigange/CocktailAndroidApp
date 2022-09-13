@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -82,6 +83,7 @@ public class InfoActivity extends AppCompatActivity {
         view_desc.setText(glass);
         Picasso.get().load(image_url).resize(450, 450)
                 .centerCrop().placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(50,10)).into(view_img);
+
 
         OkHttpClient client = new OkHttpClient();
 
@@ -158,10 +160,11 @@ public class InfoActivity extends AppCompatActivity {
                 i.putExtra("IMAGE_URL",image_url);
                 i.putExtra("TITLE",title);
 
-                /*Pair<View, String> titleQ = Pair.create((View)v.findViewById(R.id.item_image), ViewCompat.getTransitionName((View)v.findViewById(R.id.item_image)));
-                Pair<View, String> imageQ = Pair.create((View)v.findViewById(R.id.item_image), "image");
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(InfoActivity.this,titleQ);*/
-                startActivity(i/*, options.toBundle()*/);
+                Pair<View, String> titleQ = Pair.create((View)findViewById(R.id.title), "title");
+                Pair<View, String> imageQ = Pair.create((View)findViewById(R.id.img), "image");
+                Pair<View, String> notesQ = Pair.create((View)findViewById(R.id.notes), "notes");
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(InfoActivity.this,titleQ,imageQ,notesQ);
+                startActivity(i, options.toBundle());
             }
         });
 
@@ -170,7 +173,7 @@ public class InfoActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                finish();
+                supportFinishAfterTransition();
             }
         });
     }
