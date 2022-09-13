@@ -93,7 +93,7 @@
                             android:layout_height="241dp"
                             android:gravity="top"
                             android:textColor="?attr/txtColorSecondary"
-                            android:background="?attr/backgroundColor"
+                            android:background="?attr/textedit"
                             android:minLines="3"
                             android:padding="30dp"
                             tools:layout_margin="10dp" />
@@ -116,6 +116,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:backgroundTint="?attr/btnColor"
+                            android:textColor="?attr/btnTxt"
                             android:text="Save Notes" />
 
                         <Button
@@ -125,6 +126,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:backgroundTint="?attr/btnColor"
+                            android:textColor="?attr/btnTxt"
                             android:text="Cancel" />
                     </LinearLayout>
 

@@ -70,6 +70,7 @@
                 android:layout_marginRight="40dp"
                 android:gravity="center"
                 android:backgroundTint="?attr/btnColor"
+                android:textColor="?attr/btnTxt"
                 android:text="More info"/>
         </LinearLayout>
 

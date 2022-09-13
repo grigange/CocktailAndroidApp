@@ -8,9 +8,10 @@
         <item name="colorOnPrimary">#302033</item>
         <item name="android:textColor">@color/black</item>
 
-
+        <item name="textedit">@color/l_notes</item>
         <item name="btnColor">@color/l_primary</item>
         <item name="txtColor">@color/l_text</item>
+        <item name="btnTxt">@color/d_text</item>
         <item name="txtColorSecondary">@color/l_text_secondary</item>
         <item name="backgroundColor">@color/l_bg</item>
         <item name="backgroundColorCard">@color/l_card</item>
