@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -110,6 +112,16 @@ public class MainActivity extends AppCompatActivity {
         internetLayout = findViewById(R.id.internetLayout);
         noInternetLayout = findViewById(R.id.noInternetLayout);
         tryAgain = findViewById(R.id.try_again_button);
+        ImageView image = findViewById(R.id.no_internet_image);
+        int currentNightMode = Configuration.UI_MODE_NIGHT_MASK;
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                image.setImageResource(R.drawable.no_connection);
+                break;
+            case Configuration.UI_MODE_NIGHT_YES:
+                image.setImageResource(R.drawable.no_connection_dark);
+                break;
+        }
 
         recyclerView = findViewById(R.id.recycler_view);
         cocktailList = new ArrayList<>();

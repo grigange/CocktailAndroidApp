@@ -13,7 +13,7 @@
 
     <!-- DARK MODE -->
     <color name="d_primary">#9175B5</color> <!-- Primary -->
-    <color name="d_text_secondary">#E6DFD2F0</color> <!-- Text Secondary -->
+    <color name="d_text_secondary">#DFD2F0</color> <!-- Text Secondary -->
     <color name="d_bg">#FF000000</color> <!-- Background -->
     <color name="d_card">#150f1a</color> <!-- Card -->
     <color name="d_text">#FFFFFFFF</color> <!-- Text Main -->
