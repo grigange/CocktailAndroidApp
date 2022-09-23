@@ -179,12 +179,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:textAlignment="textStart"
+                                android:background="@drawable/rounded_edittext"
                                 android:gravity="start"
-                                android:padding="5dp"
                                 android:minLines="5"
+                                android:padding="5dp"
                                 android:text=""
-                                android:background="?attr/textedit"
+                                android:textAlignment="textStart"
                                 android:textColor="?attr/txtColorSecondary"
                                 android:transitionName="notes" />
                         </LinearLayout>

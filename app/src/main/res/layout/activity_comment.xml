@@ -90,7 +90,7 @@
                             android:layout_height="241dp"
                             android:gravity="top"
                             android:textColor="?attr/txtColorSecondary"
-                            android:background="?attr/textedit"
+                            android:background="@drawable/rounded_edittext"
                             android:minLines="3"
                             android:transitionName="notes"
                             android:padding="30dp"

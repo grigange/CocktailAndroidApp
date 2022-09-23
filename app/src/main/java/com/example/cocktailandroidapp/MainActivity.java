@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout internetLayout;
     RelativeLayout noInternetLayout;
     Button tryAgain;
+    LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
 
 
     public class GetData extends AsyncTask<String, String, String> {
@@ -91,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            loadingDialog.DismissDialog();
             PutDataIntoRecyclerView(cocktailList);
 
         }
@@ -128,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(isConnected()){
             internetLayout.setVisibility(View.VISIBLE);
+            loadingDialog.StartLoadingDialog();
             noInternetLayout.setVisibility(View.INVISIBLE);
         }
         else{
