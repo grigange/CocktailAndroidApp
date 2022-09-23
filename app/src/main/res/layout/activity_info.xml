@@ -198,8 +198,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:clickable="true"
-
                         android:textAlignment="viewStart"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -209,13 +207,17 @@
                             android:layout_height="wrap_content"
                             android:gravity="top"
                             android:textColor="?attr/txtColorSecondary"
-                            android:enabled="false"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:inputType="none"
+
 
                             android:background="@drawable/rounded_edittext"
                             android:minLines="3"
                             android:transitionName="notes"
                             android:textSize="16sp"
-                            android:padding="10dp" />
+                            android:padding="10dp"
+                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
