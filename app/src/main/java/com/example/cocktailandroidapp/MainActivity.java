@@ -13,7 +13,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,10 +37,12 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder> adapter;
 
+
     RelativeLayout internetLayout;
     RelativeLayout noInternetLayout;
     Button tryAgain;
-    LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
+    //LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
+
 
 
     public class GetData extends AsyncTask<String, String, String> {
@@ -45,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             String current = "";
+            LinearLayout Loading;
+            Loading = findViewById(R.id.loading);
 
             try {
                 URL myURL = new URL("https://the-cocktail-db.p.rapidapi.com/popular.php");
@@ -76,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
+            LinearLayout Loading;
+            Loading = findViewById(R.id.loading);
             try {
                 JSONObject ob = new JSONObject(s);
                 JSONArray a = ob.getJSONArray("drinks");
@@ -93,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            loadingDialog.DismissDialog();
+            Loading.setVisibility(View.INVISIBLE);
             PutDataIntoRecyclerView(cocktailList);
 
         }
@@ -116,6 +125,10 @@ public class MainActivity extends AppCompatActivity {
         noInternetLayout = findViewById(R.id.noInternetLayout);
         tryAgain = findViewById(R.id.try_again_button);
         ImageView image = findViewById(R.id.no_internet_image);
+
+        ImageView gif = findViewById(R.id.gif);
+        Glide.with(this).asGif().load(R.drawable.gif).into(gif);
+
         int currentNightMode = Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
@@ -129,9 +142,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         cocktailList = new ArrayList<>();
 
+
+
+
+
         if(isConnected()){
             internetLayout.setVisibility(View.VISIBLE);
-            loadingDialog.StartLoadingDialog();
+            //loadingDialog.StartLoadingDialog();
             noInternetLayout.setVisibility(View.INVISIBLE);
         }
         else{
