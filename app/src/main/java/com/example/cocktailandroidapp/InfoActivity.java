@@ -81,7 +81,7 @@ public class InfoActivity extends AppCompatActivity {
         TextView view_recipe = (TextView)findViewById(R.id.recipe);
         LinearLayout note_field = (LinearLayout)findViewById(R.id.noteField);
 
-        note_field.setOnClickListener(new View.OnClickListener() {
+        theNote.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
