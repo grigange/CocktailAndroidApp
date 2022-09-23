@@ -94,7 +94,7 @@
                             android:gravity="top"
                             android:textColor="?attr/txtColorSecondary"
                             android:background="?attr/textedit"
-                            android:minLines="3"
+                            android:minLines="5"
                             android:transitionName="notes"
                             android:padding="30dp"
                             tools:layout_margin="10dp" />

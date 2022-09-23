@@ -108,7 +108,9 @@
                             android:id="@+id/igr_list"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="left">
+                            android:layout_gravity="left"
+                            android:layout_margin="5dp"
+                            android:padding="5dp">
 
                         </androidx.recyclerview.widget.RecyclerView>
 
@@ -161,21 +163,36 @@
                         android:textStyle="italic" />
 
 
-                    <TextView
-                        android:id="@+id/notes"
-                        android:layout_width="352dp"
-                        android:layout_height="44dp"
-                        android:layout_margin="5dp"
-                        android:layout_weight="1"
-                        android:textColor="?attr/txtColorSecondary"
-                        android:padding="5dp"
-                        android:transitionName="notes">
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp">
 
-                    </TextView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/notes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:textAlignment="textStart"
+                                android:gravity="start"
+                                android:padding="5dp"
+                                android:minLines="5"
+                                android:text=""
+                                android:background="?attr/textedit"
+                                android:textColor="?attr/txtColorSecondary"
+                                android:transitionName="notes" />
+                        </LinearLayout>
+                    </ScrollView>
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="174dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -186,8 +203,8 @@
                             android:layout_margin="5dp"
                             android:layout_weight="2"
                             android:backgroundTint="?attr/btnColor"
-                            android:textColor="?attr/btnTxt"
-                            android:text="Add Notes" />
+                            android:text="Add Notes"
+                            android:textColor="?attr/btnTxt" />
 
                         <Button
                             android:id="@+id/cancelBTN"
@@ -196,8 +213,8 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:backgroundTint="?attr/btnColor"
-                            android:textColor="?attr/btnTxt"
-                            android:text="Cancel" />
+                            android:text="Cancel"
+                            android:textColor="?attr/btnTxt" />
                     </LinearLayout>
 
                 </LinearLayout>
