@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -127,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView image = findViewById(R.id.no_internet_image);
 
         ImageView gif = findViewById(R.id.gif);
-        Glide.with(this).asGif().load(R.drawable.gif).into(gif);
+        Glide.with(this).asGif().load(R.drawable.gif).transform(new RoundedCorners(40)).into(gif);
 
         int currentNightMode = Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
