@@ -82,10 +82,7 @@
                         android:layout_marginTop="10dp"
                         android:gravity="start"
                         android:hint="Add your notes here"
-                        android:textAlignment="viewStart"
-                        app:boxCornerRadiusTopEnd="10dp"
-
-                        app:boxCornerRadiusTopStart="10dp">
+                        android:textAlignment="viewStart">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/notes2"
@@ -94,7 +91,7 @@
                             android:gravity="top"
                             android:textColor="?attr/txtColorSecondary"
                             android:background="?attr/textedit"
-                            android:minLines="5"
+                            android:minLines="3"
                             android:transitionName="notes"
                             android:padding="30dp"
                             tools:layout_margin="10dp" />
