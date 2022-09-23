@@ -46,6 +46,7 @@ public class CommentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
         theNote= findViewById(R.id.notes2);
+        //theNote.requestFocus();
         addNoteBtn = findViewById(R.id.saveNotesBTN);
         title_comment = findViewById(R.id.title_comment);
         image_comment = findViewById(R.id.image_comment);

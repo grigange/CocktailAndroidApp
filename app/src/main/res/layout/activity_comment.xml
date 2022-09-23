@@ -79,22 +79,24 @@
                         android:id="@+id/textField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:gravity="start"
                         android:hint="Add your notes here"
-                        android:textAlignment="viewStart">
+
+                        android:textAlignment="viewStart"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/notes2"
                             android:layout_width="match_parent"
-                            android:layout_height="241dp"
+                            android:layout_height="match_parent"
                             android:gravity="top"
                             android:textColor="?attr/txtColorSecondary"
-                            android:background="?attr/textedit"
-                            android:minLines="3"
+
+                            android:background="@drawable/rounded_edittext"
+                            android:minLines="12"
                             android:transitionName="notes"
-                            android:padding="30dp"
-                            tools:layout_margin="10dp" />
+                            android:textSize="16sp"
+                            android:padding="10dp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 

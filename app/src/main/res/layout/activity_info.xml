@@ -90,7 +90,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:minHeight="150dp">
 
                         <TextView
                             android:id="@+id/title_ingredients"
@@ -143,6 +144,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
+                                android:minLines="3"
                                 android:layout_weight="1"
                                 android:padding="5dp"
                                 android:textColor="?attr/txtColorSecondary"
@@ -162,7 +164,7 @@
                         android:textColor="?attr/txtColor"
                         android:textStyle="italic" />
 
-
+                <!--
                     <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="150dp">
@@ -181,14 +183,41 @@
                                 android:layout_weight="1"
                                 android:textAlignment="textStart"
                                 android:gravity="start"
-                                android:padding="5dp"
+                                android:padding="10dp"
                                 android:minLines="5"
+                                android:textSize="16sp"
                                 android:text=""
-                                android:background="?attr/textedit"
+                                android:background="@drawable/rounded_edittext"
                                 android:textColor="?attr/txtColorSecondary"
                                 android:transitionName="notes" />
                         </LinearLayout>
                     </ScrollView>
+                    -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/noteField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:clickable="true"
+
+                        android:textAlignment="viewStart"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/notes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="top"
+                            android:textColor="?attr/txtColorSecondary"
+                            android:enabled="false"
+
+                            android:background="@drawable/rounded_edittext"
+                            android:minLines="3"
+                            android:transitionName="notes"
+                            android:textSize="16sp"
+                            android:padding="10dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"

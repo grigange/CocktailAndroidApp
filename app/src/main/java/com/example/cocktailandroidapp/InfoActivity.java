@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -54,6 +55,7 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         TextView theNote= (TextView)findViewById(R.id.notes) ;
 
+
         Intent intent = getIntent();
         String card_id = intent.getStringExtra("ID_REQ");
         String image_url = intent.getStringExtra("IMAGE_URL");
@@ -67,7 +69,8 @@ public class InfoActivity extends AppCompatActivity {
 
         }*/
         theNote.setText(dbHandler.searchById(card_id));
-        theNote.setGravity(Gravity.CENTER);
+
+
 
 
 
@@ -76,6 +79,25 @@ public class InfoActivity extends AppCompatActivity {
         ImageView view_img = (ImageView)findViewById(R.id.img);
         TextView view_desc = (TextView)findViewById(R.id.desc);
         TextView view_recipe = (TextView)findViewById(R.id.recipe);
+        LinearLayout note_field = (LinearLayout)findViewById(R.id.noteField);
+
+        note_field.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(InfoActivity.this, CommentActivity.class);
+                i.putExtra("ID_REQ",card_id);
+                i.putExtra("IMAGE_URL",image_url);
+                i.putExtra("TITLE",title);
+
+                Pair<View, String> titleQ = Pair.create((View)findViewById(R.id.title), "title");
+                Pair<View, String> imageQ = Pair.create((View)findViewById(R.id.img), "image");
+                Pair<View, String> notesQ = Pair.create((View)findViewById(R.id.notes), "notes");
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(InfoActivity.this,titleQ,imageQ,notesQ);
+                startActivity(i, options.toBundle());
+            }
+        });
         list = findViewById(R.id.igr_list);
 
 
