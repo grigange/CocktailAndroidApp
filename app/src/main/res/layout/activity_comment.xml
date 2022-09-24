@@ -23,7 +23,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="10dp"
-                app:cardPreventCornerOverlap="true"
+                app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="false">
 
                 <!--
@@ -40,63 +40,57 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:background="?attr/backgroundColorCard"
+                    android:gravity="start"
                     android:isScrollContainer="true"
                     android:orientation="vertical"
-                    android:background="?attr/backgroundColorCard"
                     android:padding="10dp">
 
                     <TextView
                         android:id="@+id/title_comment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/vidaloka"
                         android:textAlignment="center"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
                         android:textColor="?attr/txtColor"
-                        android:transitionName="title"/>
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="23dp" />
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:transitionName="title" />
 
                     <ImageView
                         android:id="@+id/image_comment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="5dp"
+                        android:layout_margin="10dp"
                         android:contentDescription="@string/cocktail_image"
-                        android:transitionName="image"/>
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="39dp" />
+                        android:minHeight="300dp"
+                        android:transitionName="image" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textField"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:hint="Add your notes here"
 
-                        android:textAlignment="viewStart"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        android:hint="Add your notes here"
+                        android:textAlignment="viewStart">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/notes2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="top"
-                            android:textColor="?attr/txtColorSecondary"
-
                             android:background="@drawable/rounded_edittext"
+                            android:gravity="top"
+
                             android:minLines="12"
-                            android:transitionName="notes"
+                            android:padding="10dp"
+                            android:textColor="?attr/txtColorSecondary"
                             android:textSize="16sp"
-                            android:padding="10dp" />
+                            android:transitionName="notes" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,8 +110,8 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:backgroundTint="?attr/btnColor"
-                            android:textColor="?attr/btnTxt"
-                            android:text="Save Notes" />
+                            android:text="Save Notes"
+                            android:textColor="?attr/btnTxt" />
 
                         <Button
                             android:id="@+id/cancelBTN2"
@@ -126,8 +120,8 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:backgroundTint="?attr/btnColor"
-                            android:textColor="?attr/btnTxt"
-                            android:text="Cancel" />
+                            android:text="Cancel"
+                            android:textColor="?attr/btnTxt" />
                     </LinearLayout>
 
                 </LinearLayout>

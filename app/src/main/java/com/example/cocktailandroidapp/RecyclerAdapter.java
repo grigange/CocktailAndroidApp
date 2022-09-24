@@ -27,6 +27,9 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -106,15 +109,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         String finalGlass = emoji + glass;
         holder.itemTitle.setText(mData.get(position).getTitle());
         holder.itemDetail.setText(finalGlass);
-        Picasso.get().load(mData.get(position).getImg())
-                .placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(20,10)).resize(300, 300).centerCrop().into(holder.itemImage);
-
-        holder.itemButton.setOnClickListener(new View.OnClickListener() {
+        Glide.with(mContext).load(mData.get(position).getImg()).apply(new RequestOptions().override(175, 175)).transform(new RoundedCorners(20)).into(holder.itemImage);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Intent i=new Intent(v.getContext(), InfoActivity.class);
+                Intent i=new Intent(mContext, InfoActivity.class);
                 i.putExtra("ID_REQ",mData.get(position).getId());
                 i.putExtra("IMAGE_URL",mData.get(position).getImg());
                 i.putExtra("TITLE",mData.get(position).getTitle());
@@ -126,7 +127,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 Pair<View, String> desc = Pair.create((View)holder.itemDetail, "desc");
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) mContext,card,desc,title,image);
 
-                v.getContext().startActivity(i, options.toBundle());
+                mContext.startActivity(i, options.toBundle());
             }
         });
         holder.itemView.startAnimation(animation);

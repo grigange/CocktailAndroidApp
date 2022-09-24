@@ -48,32 +48,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:fontFamily="@font/vidaloka"
                 android:text="@string/item_title"
                 android:textAlignment="center"
                 android:textColor="?attr/txtColor"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/item_details"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:textColor="?attr/txtColorSecondary"
                 android:padding="5dp"
-                android:transitionName="desc"
-                android:text="123" />
-
-            <Button
-                android:id="@+id/item_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:gravity="center"
-                android:backgroundTint="?attr/btnColor"
-                android:textColor="?attr/btnTxt"
-                android:text="More info"/>
+                android:textColor="?attr/txtColorSecondary"
+                android:transitionName="desc" />
         </LinearLayout>
 
     </LinearLayout>

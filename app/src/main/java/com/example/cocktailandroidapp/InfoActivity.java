@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
+import android.telecom.Call.Details;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +28,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -103,10 +107,8 @@ public class InfoActivity extends AppCompatActivity {
 
         view_title.setText(title);
         view_desc.setText(glass);
-        Picasso.get().load(image_url).resize(450, 450)
-                .centerCrop().placeholder(R.drawable.ic_cocktail_shaker_svgrepo_com).transform(new RoundedImage(50,10)).into(view_img);
 
-
+        Glide.with(this).load(image_url).apply(new RequestOptions().override(450, 450)).transform(new RoundedCorners(50)).into(view_img);
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
@@ -185,8 +187,8 @@ public class InfoActivity extends AppCompatActivity {
                 Pair<View, String> titleQ = Pair.create((View)findViewById(R.id.title), "title");
                 Pair<View, String> imageQ = Pair.create((View)findViewById(R.id.img), "image");
                 Pair<View, String> notesQ = Pair.create((View)findViewById(R.id.notes), "notes");
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(InfoActivity.this,titleQ,imageQ,notesQ);
-                startActivity(i, options.toBundle());
+                ActivityOptionsCompat options2 = ActivityOptionsCompat.makeSceneTransitionAnimation(InfoActivity.this,titleQ,imageQ,notesQ);
+                startActivity(i, options2.toBundle());
             }
         });
 

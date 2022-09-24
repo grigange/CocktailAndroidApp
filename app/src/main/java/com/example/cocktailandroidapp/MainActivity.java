@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout internetLayout;
     RelativeLayout noInternetLayout;
     Button tryAgain;
-    //LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
 
 
 
@@ -52,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             String current = "";
-            LinearLayout Loading;
-            Loading = findViewById(R.id.loading);
 
             try {
                 URL myURL = new URL("https://the-cocktail-db.p.rapidapi.com/popular.php");
@@ -150,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
 
         if(isConnected()){
             internetLayout.setVisibility(View.VISIBLE);
-            //loadingDialog.StartLoadingDialog();
             noInternetLayout.setVisibility(View.INVISIBLE);
         }
         else{

@@ -25,8 +25,22 @@
             <ImageView
                 android:id="@+id/gif"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="300dp"
                 app:srcCompat="@drawable/gif" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="80dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/frijole"
+                android:text="Loading..."
+                android:textAlignment="center"
+                android:textColor="?attr/btnColor"
+                android:textSize="30sp" />
 
         </LinearLayout>
 

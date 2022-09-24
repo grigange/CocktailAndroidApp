@@ -25,7 +25,7 @@
     <color name="l_text_secondary">#483C5C</color> <!-- Text Secondary -->
     <color name="l_bg">#F4EAC4</color> <!-- Background -->
     <color name="l_card">#D2BBEF</color> <!-- Card -->
-    <color name="l_text">#FF000000</color> <!-- Text Main -->
+    <color name="l_text">#4C4151</color> <!-- Text Main -->
 
 
 </resources>
