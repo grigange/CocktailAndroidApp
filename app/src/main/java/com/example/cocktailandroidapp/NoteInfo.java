@@ -1,6 +1,6 @@
 package com.example.cocktailandroidapp;
 
-public class CommentsInfo {
+public class NoteInfo {
     private String comment;
     private String card_id;
     private int id;
@@ -30,7 +30,7 @@ public class CommentsInfo {
     public void setCardId(String card_id) {
         this.card_id = card_id;
     }
-    public CommentsInfo(String card_id ,String comment) {
+    public NoteInfo(String card_id , String comment) {
         this.card_id = card_id;
         this.comment = comment;
     }

@@ -7,5 +7,5 @@
     <attr name="btnColor" format="color"/>
     <attr name="btnTxt" format="color"/>
     <attr name="textedit" format="color"/>
-
+    <attr name="no_internet" format="string"></attr>
 </resources>

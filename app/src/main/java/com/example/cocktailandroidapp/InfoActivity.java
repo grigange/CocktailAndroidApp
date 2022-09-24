@@ -4,34 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
-import android.telecom.Call.Details;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,7 +33,7 @@ import okhttp3.Response;
 
 public class InfoActivity extends AppCompatActivity {
 
-    private ArrayList<CommentsInfo> CommentsInfoArrayList;
+    private ArrayList<NoteInfo> CommentsInfoArrayList;
     private DBHandler dbHandler;
     RecyclerView list;
     RecyclerView.LayoutManager list_layout = new LinearLayoutManager(this);
@@ -58,6 +44,7 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         TextView theNote= (TextView)findViewById(R.id.notes) ;
+        theNote.setTransitionName(null);
 
 
         Intent intent = getIntent();
@@ -66,12 +53,7 @@ public class InfoActivity extends AppCompatActivity {
         String title = intent.getStringExtra("TITLE");
         String glass = intent.getStringExtra("GLASS");
         dbHandler = new DBHandler(InfoActivity.this);
-        /*CommentsInfo note = new CommentsInfo(card_id,"");
-        if (!CommentsInfoArrayList.isEmpty()){
-            CommentsInfoArrayList = dbHandler.readComments();
-            note = CommentsInfoArrayList.get(0);
 
-        }*/
         theNote.setText(dbHandler.searchById(card_id));
 
 
@@ -83,14 +65,16 @@ public class InfoActivity extends AppCompatActivity {
         ImageView view_img = (ImageView)findViewById(R.id.img);
         TextView view_desc = (TextView)findViewById(R.id.desc);
         TextView view_recipe = (TextView)findViewById(R.id.recipe);
-        LinearLayout note_field = (LinearLayout)findViewById(R.id.noteField);
 
         theNote.setOnClickListener(new View.OnClickListener() {
 
+            /**on click gia to textview pou paei sto activity me ta notes*/
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(InfoActivity.this, CommentActivity.class);
+                theNote.setTransitionName("notes");
+
+                Intent i = new Intent(InfoActivity.this, NoteActivity.class);
                 i.putExtra("ID_REQ",card_id);
                 i.putExtra("IMAGE_URL",image_url);
                 i.putExtra("TITLE",title);
@@ -110,7 +94,7 @@ public class InfoActivity extends AppCompatActivity {
 
         Glide.with(this).load(image_url).apply(new RequestOptions().override(450, 450)).transform(new RoundedCorners(50)).into(view_img);
         OkHttpClient client = new OkHttpClient();
-
+/** xtupaei to api*/
         Request request = new Request.Builder()
                 .url("https://the-cocktail-db.p.rapidapi.com/lookup.php?i=" + card_id )
                 .get()
@@ -124,12 +108,11 @@ public class InfoActivity extends AppCompatActivity {
                 e.printStackTrace();
 
             }
-
+/** sto success epejergazetai to data gia to kathe ingredient kai to vazei ola mazi sto ListAdapter,vazei to recipe*/
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (response.isSuccessful()){
                     String myResponse = response.body().string();
-                    Log.i("MYSDY**************",myResponse);
                     InfoActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -140,19 +123,19 @@ public class InfoActivity extends AppCompatActivity {
                                 String recipe = null;
                                 recipe = ob.getJSONArray("drinks").getJSONObject(0).getString("strInstructions");
                                 int i = 1;
-                                ArrayList<String> Igredients = new ArrayList<String>();
+                                ArrayList<String> Ingredients = new ArrayList<String>();
                                 while (i < 15) {
                                     String meas = ob.getJSONArray("drinks").getJSONObject(0).getString("strMeasure" + i);
                                     String igr = ob.getJSONArray("drinks").getJSONObject(0).getString("strIngredient" + i);
                                     if (igr.isEmpty() || igr == "null"){
                                         i = 50;
                                     }else{
-                                        Igredients.add("\u2022  " +   meas + "  "+ igr);
+                                        Ingredients.add("\u2022  " +   meas + "  "+ igr);
                                         Log.i("IGR",meas + igr);
                                     }
                                     i++;
                                 }
-                                ListAdapter adapter = new ListAdapter(Igredients);
+                                ListAdapter adapter = new ListAdapter(Ingredients);
                                 list.setLayoutManager(list_layout);
                                 list.setAdapter(adapter);
                                 view_recipe.setText(recipe);
@@ -169,9 +152,11 @@ public class InfoActivity extends AppCompatActivity {
         });
 
 
+        /**to koumpi gia na paei sto activity pou epeksergazetai ta notes*/
+
         Button button1= (Button)findViewById(R.id.addNoteBTN);
         if(dbHandler.searchById(card_id) != ""){
-            button1.setText("UPDATE NOTES");
+            button1.setText("EDIT NOTES");
 
         }
         button1.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +164,7 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(InfoActivity.this, CommentActivity.class);
+                Intent i = new Intent(InfoActivity.this, NoteActivity.class);
                 i.putExtra("ID_REQ",card_id);
                 i.putExtra("IMAGE_URL",image_url);
                 i.putExtra("TITLE",title);
@@ -192,6 +177,7 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
+        /**to cancel button se paei pisw sto main activity*/
         Button button2= (Button)findViewById(R.id.cancelBTN);
         button2.setOnClickListener(new View.OnClickListener() {
 
@@ -201,6 +187,8 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
     }
+
+
     @Override
     public void onResume(){
         super.onResume();
@@ -208,9 +196,10 @@ public class InfoActivity extends AppCompatActivity {
         String card_id = intent.getStringExtra("ID_REQ");
         TextView theNote= (TextView)findViewById(R.id.notes) ;
         theNote.setText(dbHandler.searchById(card_id));
+        theNote.setTransitionName(null);
         Button button1= (Button)findViewById(R.id.addNoteBTN);
         if(dbHandler.searchById(card_id) != ""){
-            button1.setText("UPDATE NOTES");
+            button1.setText("EDIT NOTES");
 
         }
 

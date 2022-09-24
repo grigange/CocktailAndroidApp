@@ -30,7 +30,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -61,7 +60,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             itemImage = itemView.findViewById(R.id.item_image);
             itemTitle = itemView.findViewById(R.id.item_title);
             itemDetail = itemView.findViewById(R.id.item_details);
-            itemButton = itemView.findViewById(R.id.item_button);
             itemCard = itemView.findViewById(R.id.card_view);
 
 
@@ -91,12 +89,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public int findRelativeAdapterPositionIn(@NonNull RecyclerView.Adapter<? extends RecyclerView.ViewHolder> adapter, @NonNull RecyclerView.ViewHolder viewHolder, int localPosition) {
         return super.findRelativeAdapterPositionIn(adapter, viewHolder, localPosition);
     }
-
+/**gia kathe cocktail tropopoiei to data,to vazei sto holder kai to kanei animate*/
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
         Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.slide_in_row);
 
-        int pos =  holder.getAbsoluteAdapterPosition();
         String glass = mData.get(position).getDesc();
         String emoji = "\uD83C\uDF78  ";
         if (glass.equalsIgnoreCase("Whiskey Glass") || glass.equalsIgnoreCase("Old-fashioned glass")){
@@ -111,7 +109,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.itemDetail.setText(finalGlass);
         Glide.with(mContext).load(mData.get(position).getImg()).apply(new RequestOptions().override(175, 175)).transform(new RoundedCorners(20)).into(holder.itemImage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
-
+/**Ean kaneis click to item tou recyclerview pairnaei sto intent ta shared data kai ta shared elements gia to transition*/
             @Override
             public void onClick(View v) {
 

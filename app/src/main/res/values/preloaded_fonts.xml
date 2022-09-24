@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
-        <item>@font/akronim</item>
-        <item>@font/amethysta</item>
-        <item>@font/archivo_black</item>
-        <item>@font/autour_one</item>
         <item>@font/frijole</item>
-        <item>@font/gamja_flower</item>
-        <item>@font/knewave</item>
-        <item>@font/kranky</item>
-        <item>@font/rock_salt</item>
-        <item>@font/shojumaru</item>
-        <item>@font/spicy_rice</item>
         <item>@font/vidaloka</item>
     </array>
 </resources>

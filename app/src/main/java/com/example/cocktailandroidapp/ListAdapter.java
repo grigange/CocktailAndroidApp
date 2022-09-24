@@ -14,8 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 
@@ -51,11 +49,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return new ViewHolder(v);
 
     }
-
+/**Gia kathe ingredient kanei to text tou holder analogo*/
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        int pos =  holder.getAbsoluteAdapterPosition();
         holder.igr_item.setText(mData.get(position));
 
 

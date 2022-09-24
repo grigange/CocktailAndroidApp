@@ -20,7 +20,7 @@ public class DBHandler extends SQLiteOpenHelper {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
-
+    /**dhmiourgia kainourgiou row sthn bash */
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -46,7 +46,7 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-
+    /**anazhthsh stoixeiwn me to id tous*/
     public String searchById(String str){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursorCourses = db.rawQuery("SELECT * FROM comments WHERE cardID=? ", new String[] {str});
@@ -62,7 +62,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-
+    /**ananeosi twn stoixeiwn ths bashs dedomenwn*/
     public void updateNote(String originalNote, String note,String id) {
 
         SQLiteDatabase db = this.getWritableDatabase();

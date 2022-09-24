@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     Button tryAgain;
 
 
-
+/** Klash h opoia asygxrona sto background xtupaei to api gia dedomena*/
     public class GetData extends AsyncTask<String, String, String> {
 
         @Override
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             return current;
         }
 
-
+        /** Epeita me ta dedomena ftiaxnei ena modelo CocktailModelClass gia kathe cocktail kai to vazei se ena List*/
         @Override
         protected void onPostExecute(String s) {
             LinearLayout Loading;
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
+/**vazei thn Lista cocktailList sto recyclerview mesw tou adaptora*/
     private void PutDataIntoRecyclerView(List<CocktailModelClass> cocktailList) {
         RecyclerAdapter adapter = new RecyclerAdapter(this, cocktailList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -128,23 +128,13 @@ public class MainActivity extends AppCompatActivity {
         ImageView gif = findViewById(R.id.gif);
         Glide.with(this).asGif().load(R.drawable.gif).transform(new RoundedCorners(40)).into(gif);
 
-        int currentNightMode = Configuration.UI_MODE_NIGHT_MASK;
-        switch (currentNightMode) {
-            case Configuration.UI_MODE_NIGHT_NO:
-                image.setImageResource(R.drawable.no_connection_light);
-                break;
-            case Configuration.UI_MODE_NIGHT_YES:
-                image.setImageResource(R.drawable.no_connection_dark);
-                break;
-        }
-
         recyclerView = findViewById(R.id.recycler_view);
         cocktailList = new ArrayList<>();
 
 
 
 
-
+        /**emfanizetai katallhlo layout se periptwsh pou den yparxei internet*/
         if(isConnected()){
             internetLayout.setVisibility(View.VISIBLE);
             noInternetLayout.setVisibility(View.INVISIBLE);
@@ -169,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    /**ayth h klash elegxei an o xrhsths exei internet*/
     boolean isConnected() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
